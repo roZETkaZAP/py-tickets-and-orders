@@ -62,7 +62,10 @@ class MovieSession(models.Model):
 
 class Order(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
-    user = models.ForeignKey("User", on_delete=CASCADE, related_name="users")
+    user = models.ForeignKey("User",
+                             on_delete=CASCADE,
+                             related_name="users"
+                             )
 
     def __str__(self) -> str:
         return str(self.created_at)
@@ -72,8 +75,13 @@ class Order(models.Model):
 
 
 class Ticket(models.Model):
-    movie_session = models.ForeignKey("MovieSession", on_delete=CASCADE)
-    order = models.ForeignKey("Order", on_delete=CASCADE, related_name="orders")
+    movie_session = models.ForeignKey("MovieSession",
+                                      on_delete=CASCADE
+                                      )
+    order = models.ForeignKey("Order",
+                              on_delete=CASCADE,
+                              related_name="orders"
+                              )
     row = models.IntegerField()
     seat = models.IntegerField()
 
